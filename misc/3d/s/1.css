@@ -1,0 +1,58 @@
+/* HTML */
+
+body {background-color:#92f4ff; color:#005562;}
+
+a {color:#E50;}
+a:hover {color:#005562;}
+
+h2 {border-bottom:1px solid #D2D2C6;}
+h3 {color:#e50;}
+
+table.table-style01 th {background:#005562 url("1/table-style01.gif") 0 0 repeat-x; color:#FFF;}
+table.table-style01 th, table.table-style01 td {border:1px solid #8FEFEF;}
+table.table-style01 tr.bg td {background:#E6FDFF;}
+
+/* Layout */
+
+#header {background-color:#e50;}
+
+#logo {color:#fff;}
+#logo span {color:#FFDE9B;}
+#logo a {color:#FFF;}
+
+ul#tabs li a {background-color:#005562; color:#FFF;}
+ul#tabs li#tabs-active1 a {font-weight:bold; text-decoration:none; background:#FFF; color:#008194;}
+ul#tabs li a:hover {background:#BC4300;}
+
+#search #search-input {border:1px solid #FFF;}
+#search #search-submit {border:1px solid #BC4300; background:#BC4300; color:#FFF;}
+
+#content {background:#FFF;}
+
+#aside {background:#FFF;}
+#aside .title {background-color:#EFEFEB; color:#e50;}
+
+.nav li a {color:#008194;}
+.nav a:hover {color:#E50;} 
+
+#footer {background-color:#005562; color:#FFF;}
+#footer a {color:#FFF;}
+#footer a:hover {color:#CCF9FF;}
+    
+/* Page: Homepage */
+
+#perex-title {border-bottom:1px solid #d2d2c6; background-color:#E4E4DD; color:#e50;}
+#perex {background:#efefeb; color:#50553F;}
+
+/* Extras */
+body {background-image:url("1/bg.gif")}
+ul.ul-style01 li {background-image:url("1/ul-style01.gif")}
+ul.ul-style01 ul li {background-image:url("1/ul-style01-sub.gif")}
+#main {background-image:url("1/main.gif")}
+#main-in {background-image:url("1/main-in.gif")}
+#header {background-image:url("1/header.gif")}
+ul#tabs li a {background-image:url("1/tabs-link.gif")}
+#aside .title {background-image:url("1/aside-title.gif")}
+.nav li a {background-image:url("1/nav-link.gif")}
+#footer {background-image:url("1/footer.gif")}
+#perex-title {background-image:url("1/perex-title.gif")}

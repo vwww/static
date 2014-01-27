@@ -1,0 +1,121 @@
+/* ----------------------------------------------------------------------------------------------------------
+display; position; float; z-index; overflow; width; height; margin; padding; border; background; align; font;
+1) HTML tags, reset
+2) Universal styles (display, float, margin, text-align...)
+3) Generally HTML styles (table, ul, dl...)
+4) Layout
+5) Page: Home
+---------------------------------------------------------------------------------------------------------- */
+
+/* HTML tags, reset */
+
+* {margin:0; padding:0;}
+body, div, span, p, a, img, ul, ol, li, caption, table, thead, tbody, tfoot, tr, th, td, form, fieldset, legend, label, dl, dt, dd, blockquote, applet, object, h1, h2, h3, h4, h5 {border:0;}
+body {background: 0 0 repeat-x; font:0.8em/1.5 "arial",sans-serif; text-align:center;}
+
+
+h1, h2, h3, h4, h5, h6 {margin:15px 0 10px 0;}
+h2 {font-size:120%;}
+h3, h4 {font-size:120%; font-weight:normal;}
+h5 {font-size:100%;}
+
+p, table, ul, ol, dl, fieldset {margin:15px 0;}
+
+table {border-collapse:collapse; border-spacing:0; font-size:100%;}
+th {text-align:center; font-weight:bold;}
+th, td {padding:3px 7px;}
+
+ul, ol {margin-left:30px;}
+ul ul, ol ol {margin:0; margin-left:20px;}
+ol {list-style-type:decimal;}
+li {display:list-item;}
+
+dt {font-weight:bold;}
+dd {margin-left:30px;}
+
+/* Universal styles (display, float, margin, text-align...) */
+
+.box {min-height:1px;}
+.box:after {display:block; visibility:hidden; clear:both; line-height:0; font-size:0; content:".";}
+
+.relative {position:relative;}
+
+.clear {clear:both;}
+
+.f-left {float:left !important;} img.f-left {float:left; margin-right:10px;}
+.f-right {float:right !important;} img.f-right {float:right; margin-left:10px;}
+
+.t-left {text-align:left !important;}
+.t-center {text-align:center !important;}
+.t-right {text-align:right !important;}
+.t-justify {text-align:justify !important;}
+
+.va-top {vertical-align:top;}
+.va-middle {vertical-align:middle;}
+.va-bottom {vertical-align:bottom;}
+
+.nom {margin:0 !important;}
+.nomt {margin-top:0 !important;}
+.nomb {margin-bottom:0 !important;}
+
+.noscreen {display:none;}
+
+    .bigger {font-size:110%;}
+    .smaller {font-size:85%;}
+
+/* ----------------------------------------------------------------------------------------------------------
+3) Generally HTML styles (table, ul, dl...)
+---------------------------------------------------------------------------------------------------------- */
+
+ul.ul-style01 {margin:15px 0; list-style:none;}
+ul.ul-style01 li {padding-left:12px; background: 0 7px no-repeat;}
+ul.ul-style01 ul {margin:0; list-style:none;}
+ul.ul-style01 ul li {padding-left:15px; background: 0 3px no-repeat;}
+
+/*  LAYOUT */
+
+#main {width:960px; margin:0 auto; background: 0 0 repeat-y;}
+
+    #main-in {width:940px; padding:0 10px; background: 0 0 no-repeat; text-align:left;}
+    
+    	#header {position:relative; padding:20px 20px 0 20px; background: 0 0 repeat-x; overflow:hidden;}
+    
+            #logo {margin:0; margin-bottom:10px; width:630px; font:normal 220%/1.4 "arial",sans-serif; letter-spacing:-1px;}
+            #logo span {font-weight:bold;}
+            #logo a {text-decoration:none;}
+            #logo a:hover {text-decoration:underline;}
+            
+            ul#tabs {margin:0; margin-left:225px; padding:0; list-style:none;}
+            ul#tabs li {display:inline; margin:0; padding:0;}
+            ul#tabs li a {display:block; float:left; margin-right:5px; padding:7px 15px; background: 0 0 repeat-x; text-decoration:underline;border-radius:6px 6px 0 0}
+            ul#tabs li#tabs-active a {font-weight:bold; text-decoration:none;}
+   
+            #search {position:absolute; top:20px; right:20px;}
+            #search #search-input {width:150px; padding:3px; font:normal 100%/1.2 "arial",sans-serif;}
+            #search #search-submit {padding:2px; font:normal 100%/1.2 "arial",sans-serif;}
+    
+        #cols {clear:both;}
+    
+        	#content {float:right; width:665px; padding:15px 15px 15px 0; overflow:hidden;}
+    
+        	#aside {float:left; width:229px; padding:15px 0 100px 15px; overflow:hidden;}
+                
+                #aside .title {margin:0; padding:8px 10px 7px 27px; background: 10px 15px no-repeat; font-size:100%; font-weight:bold;}
+                    	            
+                .nav {margin:10px 0 10px 13px; padding:0; list-style:none;}
+                .nav li {display:inline; margin:0; padding:0;}
+                .nav li a {display:block; padding:2px 10px 2px 15px; background: 0 7px no-repeat; text-decoration:underline;}
+                .nav li#nav-active a {font-weight:bold; text-decoration:none;}
+    
+    	#footer {clear:both; padding:20px; background: 0 0 repeat-x;}
+        #footer p {margin:0;}
+
+/* Extra: ads */
+#ads {position:absolute; top:20px; right:0;}
+
+/*  Page: Home */
+
+#perex-title {margin:0; padding:8px 10px 8px 27px; background: 10px 15px no-repeat; font-size:100%;}
+#perex {padding:15px;}
+
+.col50 {float:left; width:320px;} 

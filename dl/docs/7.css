@@ -1,0 +1,57 @@
+/* HTML */
+
+body {background:#2f2f2f; color:#222;}
+
+a {color:#000;}
+a:hover {color:#CC1400;}
+
+/* Generally HTML styles (table, ul, dl...) */
+
+ul.ul-list-02 {border-top:1px solid #EAEAEA;}
+ul.ul-list-02 li {border-bottom:1px solid #EAEAEA;}
+
+ul#ul-rss li a {color:#000;}
+ul#ul-rss li a:hover {color:#F60;}
+
+/* Layout */
+
+.main.bg {background-color:#FFF;}
+
+#header {background-color:#ff2800;}
+
+#logo {color:#FFF;}
+#logo span {color:#000;}
+#logo a {color:#FFF;}
+
+#search-input input {background-color:#FFF;}
+
+#nav {background:#000;}
+#nav ul li a {border-right:1px solid #303030; color:#FFF;}
+#nav ul li#nav-active a {color:#FF1A00;}
+
+#aside a {color:#CC1400;}
+#aside a:hover {color:#000;}
+
+#aside .title {border-bottom:1px solid #CACACA;}
+
+#footer {background:#000; color:#AFAFAF;}
+#footer a {color:#AFAFAF;}
+#footer a:hover {color:#FFF;}
+
+.low {color:#808080;}
+
+/* Page: Home */
+
+#topstory {background:#FBEBE9;}
+#topstory p.date {background-color:#CC1400;}
+#topstory p.date span {color:#FFF;}
+
+.article {background:#FFF; border-bottom:1px solid #EAEAEA;}
+.article p.date {background-color:#505050;}
+.article p.date span {color:#FFF;}
+
+/* Theme-specific images */
+#header {background-image:url("7/header.gif")}
+#topstory .info, .article .info {background-image:url("7/topstory-line.gif")}
+#topstory p.date {background-image:url("7/topstory-date.gif")}
+#nav ul li#nav-active7 a {color:#FF1A00;}

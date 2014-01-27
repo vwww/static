@@ -1,0 +1,15 @@
+/* display; position; float; z-index; overflow; width; height; margin; padding; border; background; align; font; */
+
+/* HTML tags, reset */
+
+.box {height:1%;}
+
+th, td {padding:5px 7px;}
+
+/* LAYOUT */
+
+#aside {width:250px; margin-left:-6px;}
+
+/* Page: Home */
+
+#topstory p.date, .article p.date {display:block; position:absolute; top:0; left:-65px;}

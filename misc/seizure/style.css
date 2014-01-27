@@ -1,0 +1,61 @@
+body{
+	font-family: arial;
+}
+table{
+	border-spacing: 0;
+}
+thead{
+	font-weight: bold;
+}
+tfoot{
+	font-style: italic;
+}
+.hide{
+	display: none;
+}
+.blue{
+	background: #ADCBE7;
+	border: 2px solid #0F5C8E;
+	text-align: center;
+	margin: 10px auto;
+	padding: 5px 20px;
+}
+.title{
+	background: #669BCB;
+	border: 2px solid #418ACB;
+	text-align: center;
+	margin: 10px auto;
+	padding: 5px 20px;
+}
+.green{
+	background: #D6ECA6;
+	border: 2px solid #8DC93E;
+	text-align: center;
+	margin: 10px auto;
+	padding: 5px 20px;
+}
+.orange{
+	background: #FFD69F;
+	border: 2px solid #FFB304;
+	text-align: center;
+	margin: 10px auto;
+	padding: 5px 20px;
+}
+option.uberlag{
+	background: #860909;
+}
+option.lag{
+	background: #FF7673;
+}
+option.def{
+	background: #CAF378;
+}
+option.slow{
+	background: #FFC373;
+}
+option.sslow,option.ssslow{
+	background: #66A3D2;
+}
+optgroup{
+	background: #A0A0A0;
+}

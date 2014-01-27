@@ -1,0 +1,137 @@
+/* ----------------------------------------------------------------------------------------------------------
+display; position; float; z-index; overflow; width; height; margin; padding; border; background; align; font;
+1) HTML tags, reset
+2) Universal styles (display, float, margin, text-align...)
+3) Generally HTML styles (table, ul, dl...)
+4) Layout
+5) Page: Home
+Z) Others
+---------------------------------------------------------------------------------------------------------- */
+
+/* 1) HTML tags, reset */
+
+* {margin:0; padding:0;}
+body, div, span, p, a, img, ul, ol, li, caption, table, thead, tbody, tfoot, tr, th, td, form, fieldset, legend, label, dl, dt, dd, blockquote, applet, object, h1, h2, h3, h4, h5 {border:0;}
+body {/*font:0.8em/1.5 "arial",serif;*/ font-size:0.8em; line-height:1.5; font-family:"arial",serif; text-align:center;}
+
+h1, h2, h3, h4, h5, h6 {margin:15px 0 10px 0;}
+h1 {font-size:180%;}
+h2 {font-size:160%;}
+h3 {font-size:140%;}
+h4, h5 {font-size:100%;}
+
+p, table, ul, ol, dl, fieldset {margin:15px 0;}
+
+table {border-collapse:collapse; border-spacing:0; font-size:100%;}
+th {text-align:center; font-weight:bold;}
+th, td {padding:3px 7px;}
+
+ul, ol {margin-left:30px;}
+ul ul, ol ol {margin:0; margin-left:20px;}
+ol {list-style-type:decimal;}
+li {display:list-item;}
+
+dt {font-weight:bold;}
+dd {margin-left:30px;}
+
+fieldset {position:relative; padding:10px;}
+legend {position:absolute; top:-1em; margin:0; padding:5px 10px; font-size:100%; font-weight:bold;}
+
+/* 2) Universal styles (display, float, margin, text-align...) */
+
+.box {min-height:1px;}
+.box:after {display:block; visibility:hidden; clear:both; line-height:0; font-size:0; content:".";}
+
+.relative {position:relative;}
+
+.clear {clear:both;}
+
+.f-left {float:left !important;} img.f-left {float:left; margin-right:10px;}
+.f-right {float:right !important;} img.f-right {float:right; margin-left:10px;}
+
+.t-left {text-align:left !important;}
+.t-center {text-align:center !important;}
+.t-right {text-align:right !important;}
+.t-justify {text-align:justify !important;}
+
+.va-top {vertical-align:top;}
+.va-middle {vertical-align:middle;}
+.va-bottom {vertical-align:bottom;}
+
+.nom {margin:0 !important;}
+.nomt {margin-top:0 !important;}
+.nomb {margin-bottom:0 !important;}
+
+.noscreen {display:none;}
+
+.bigger {font-size:110%;}
+.smaller {font-size:85%;}   
+    
+/* 3) Generally HTML styles (table, ul, dl...) */
+ 
+ul#ul-rss {margin:15px 0; padding:0; list-style:none;}
+ul#ul-rss li {margin:0; padding:0; padding-left:20px; background:url("shared/ico-rss.gif") 0 3px no-repeat;}
+
+ul.ul-list {margin:15px 0; padding:0; list-style:none;}
+ul.ul-list li {margin:0; padding:2px 0 3px 0; background:url("shared/dot.gif") 0 100% repeat-x;}
+
+ul.ul-list-02 {margin:15px 0; padding:0; list-style:none;}
+ul.ul-list-02 li {margin:0; padding:2px 0 3px 0;}
+       
+/* 4) Layout */
+
+.main {width:850px; margin:0 auto; text-align:left;}
+.main.bg {background:url("shared/main.gif") 100% 0 repeat-y;}
+
+#header {background: 0 100% repeat-x;}
+#header .main {width:840px; position:relative; padding:25px 0 25px 10px;}
+    
+    #logo {width:580px; margin:0; font-size:220%; line-height:1; font-weight:bold; letter-spacing:-1px;}
+    #logo a {text-decoration:none;}
+   
+    #search {position:absolute; top:25px; right:10px; margin:0; padding:0; border:0;}
+    #search div {position:relative; width:200px;}
+    #search-input {position:absolute; top:0; left:0; overflow:hidden; width:170px; height:25px; background: url("shared/search.png") 0 0 no-repeat; border:0; font-size:85%;}
+    #search-input input { position:relative; /*top:7px; left:30px;*/ left:10px; width:160px; height:25px; margin:0; padding:0; border:0; background: transparent !important; }
+    #search-submit { color:transparent; position:absolute; top:0; right:0; border:0; width:30px; height:25px; background: url("shared/search-btn.png");}
+	#search-submit:hover { background: url("shared/search-hover.png");}
+        
+#nav ul {margin:0; padding:0; list-style:none;}
+#nav ul li {display:inline; margin:0; padding:0;}    
+#nav ul li a {display:block; float:left; padding:10px 15px; text-decoration:underline;}
+#nav ul li a:hover {text-decoration:none;}
+#nav ul li#nav-active a {font-weight:bold; text-decoration:none;} 
+
+#content {float:left; width:600px;}
+
+    .content-in {padding:10px 15px;}
+
+#aside {float:right; overflow:hidden; width:230px; padding:10px;}
+
+    #aside .title {margin:0; font-size:100%; font-weight:bold;}
+    #aside .aside-padding {padding:0 10px 15px 0;}
+    
+#footer {clear:both; padding:15px;}
+#footer p {margin:0;}
+
+/* 5) Page: Home */
+
+#topstory, .article {position:relative; padding:10px 15px;}
+#topstory .info, .article .info {padding-bottom:2px; background: 0 100% repeat-x;}
+#topstory .info h2, #topstory .info p, .article .info h3, .article .info p {margin:0;}
+#topstory .info p, .article .info p {padding-top:5px;}
+#topstory h2, .article h3 {font-size:160%; font-weight:normal;}
+#topstory p.date, .article p.date {display:block; position:absolute; top:0; left:-50px; margin:0; overflow:hidden; width:50px; height:41px; background: 0 0 no-repeat; text-align:center;}
+#topstory p.date span, .article p.date span {/*display:block; padding-top:14px;*/ font-size:85%; font-weight:bold;}
+#topstory p, .article p {margin:10px 0;}
+
+.article .info {background:url("shared/article-line.gif") 0 100% repeat-x;}
+.article p.date {background:url("shared/article-date.gif") 0 0 no-repeat;}
+.article p {margin:10px 0;}
+
+/* Z) Others */
+
+.ico-download {padding-left:20px; background:url("shared/download.png") no-repeat;}
+s.highlight_strike{background-color:#F55}
+span.highlight_full{background-color:#EC0}
+span.highlight_partial{background-color:#CCC}

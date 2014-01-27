@@ -1,0 +1,15 @@
+/* display; position; float; z-index; overflow; width; height; margin; padding; border; background; align; font; */
+
+/* HTML tags, reset */
+.box {height:1%;}
+
+fieldset {margin-top:30px;}
+th, td {padding:5px 7px;}
+
+/* layout */
+#main-in {width:960px;}
+
+    #search #search-input {height:24px;}
+
+    #content {width:680px;}
+    #aside {width:244px;}

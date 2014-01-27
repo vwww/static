@@ -1,0 +1,1 @@
+(function(){null===window.onload&&(window.onload=function(){document.getElementById("copyyear").innerText=(new Date).getFullYear()})})();

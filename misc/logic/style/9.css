@@ -1,0 +1,59 @@
+/* HTML */
+
+body {background-color:#bfbfbf;}
+
+a {color:#000;}
+a:hover {color:#3F3F3F;}
+
+/* Generally HTML styles (table, ul, dl...) */            
+
+table.table-style01 {border:1px solid #CCC;}
+table.table-style01 th {border-right:1px solid #CCC; background:#EFEFEF; color:#000;}
+table.table-style01 td {border:1px solid #DDD;}
+table.table-style01 tr.bg td {background:#F5F5F5;}
+
+/* Layout */
+
+#header {background-color:#000;}
+
+#logo span {color:#999;}
+#logo a {color:#FFF;}
+
+#slogan {color:#AFAFAF;}
+
+#nav {background-color:#D9D9D9;}
+#nav ul li a {color:#555;}
+#nav ul li#nav-active a {color:#000;}
+#nav ul li a:hover {color:#000;}
+
+#cols {background-color:#FFF;}
+
+#content #content-title {background-color:#000; color:#FFF;}
+
+#aside #aside-title {background-color:#000; color:#FFF;}
+#aside .title {background-color:#000; color:#DDD;}
+
+#footer {background-color:#000; color:#999;}
+#footer a {color:#999;}
+#footer a:hover {color:#FFF;}
+    
+/* Page: Home */
+
+#perex {border-top:1px solid #2A2A2A; background-color:#000; color:#CCC;}
+#perex a {color:#CCC;}
+#perex a:hover {color:#FFF;}
+
+.section h3 {background-color:#2D2D2D; color:#FFF;}
+.section h3 a {color:#FFF;}
+.section h3 a:hover {color:#DDD;}
+.section-in {border-bottom:1px solid #DADADA;}
+
+dl#news dd {border-bottom:1px solid #CACACA; color:#555;}
+dl#news dd span.date {color:#555;}
+
+/* Extras */
+ul.ul-style01 li {background-image:url("9/ul-style01.gif");}
+#header {background-image:url("9/header.jpg");}
+.section h3 {background-image:url("9/section-title.gif");}
+dl#news dt {background-image:url("9/ico-list.gif");}
+#nav ul li#nav-active9 a {font-weight:bold; text-decoration:none;}

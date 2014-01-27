@@ -1,0 +1,58 @@
+/* HTML */
+
+body {background-color:#FF3200; color:#111;}
+
+a {color:#FF3200;}
+a:hover {color:#000;}
+
+h2 {border-bottom:1px solid #C2D0D6;}
+h3 {color:#2185AF;}
+
+table.table-style01 th {background:#CACED5 url("6/table-style01.gif") 0 0 repeat-x; color:#2185AF;}
+table.table-style01 th, table.table-style01 td {border:1px solid #CACED5;}
+table.table-style01 tr.bg td {background:#F1F2F3;}
+
+/* Layout */
+
+#header {background-color:#CD2800;}
+
+#logo {color:#FFF;}
+#logo span {color:#000;}
+#logo a {color:#FFF;}
+
+ul#tabs li a {background-color:#111; color:#FFF;}
+ul#tabs li#tabs-active6 a {font-weight:bold; text-decoration:none; background:#FFF; color:#000;}
+ul#tabs li a:hover {background:#9B1E00;}
+
+#search #search-input {border:1px solid #FFF;}
+#search #search-submit {border:1px solid #9B1E00; background:#9B1E00; color:#FFF;}
+
+#content {background:#FFF;}
+
+#aside {background:#FFF;}
+#aside .title {background-color:#ECF2F3; color:#FF3200;}
+
+.nav li a {color:#5E6D6D;}
+.nav a:hover {color:#3BBAF5;} 
+
+#footer {background-color:#292929; color:#FFF;}
+#footer a {color:#FFF;}
+#footer a:hover {color:#EEE;}
+
+/* Page: Homepage */
+
+#perex-title {border-bottom:1px solid #C2D0D6; background-color:#F3F6F7; color:#FF3200;}
+#perex {background:#ECF2F3; color:#333;}
+
+/* Extras */
+body {background-image:url("6/bg.gif")}
+ul.ul-style01 li {background-image:url("6/ul-style01.gif")}
+ul.ul-style01 ul li {background-image:url("6/ul-style01-sub.gif")}
+#main {background-image:url("6/main.gif")}
+#main-in {background-image:url("6/main-in.gif")}
+#header {background-image:url("6/header.gif")}
+ul#tabs li a {background-image:url("6/tabs-link.gif")}
+#aside .title {background-image:url("6/aside-title.gif")}
+.nav li a {background-image:url("6/nav-link.gif")}
+#footer {background-image:url("6/footer.gif")}
+#perex-title {background-image:url("6/perex-title.gif")}

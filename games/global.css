@@ -1,0 +1,52 @@
+/* Global CSS */
+.clear { clear:both }
+.hidden { display:none }
+
+span.hilite { background: #CFF792; font-weight:bold; }
+img.priv_badge { padding-left: 5px; }
+
+/* Image Validation */
+span.ival_progress{
+	background:left center no-repeat url(./i/progress.gif);
+	padding-left: 20px;
+}
+span.ival_fail{
+	background:left center no-repeat url(./i/0.png);
+	padding-left: 20px;
+	color: #FF1010;
+}
+span.ival_pass{
+	background:left center no-repeat url(./i/1.png);
+	padding-left: 20px;
+}
+
+/* Game fullscreen */
+.flash_popup {
+	position: fixed;
+	z-index: 3;
+	top: 50%;
+	left: 50%;
+	margin: 0 auto;
+}
+.close_fullscreen {
+	z-index: 4;
+	position: fixed;
+	display: none;
+	top: 0px;
+	right: 0px;
+	background-color: #000;
+	color: #fff;
+	font-family: Arial;
+	font-size: 18px;
+	padding: 5px;
+}
+.close_fullscreen a {
+	text-decoration: none;
+	color: #fff;
+}
+._3dmissing {
+	margin: auto;
+	position: relative;
+	top: 50%;
+	width: 193px;
+}
