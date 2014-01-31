@@ -130,6 +130,18 @@ article{
     iframe{
       border: none;
     }
+    div.img-left, div.img-right, div.img-center{
+      padding: 10px;
+    }
+    div.img-left{
+      float: left;
+    }
+    div.img-right{
+      float: right;
+    }
+    div.img-center{
+      text-align: center;
+    }
     .caption{
       color: $color-meta;
       display: block;
