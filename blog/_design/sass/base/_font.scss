@@ -3,13 +3,13 @@ $font-title: "Pontano Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Hel
 $font-mono: Menlo, Monaco, Andale Mono, Lucida console, Courier New, monospace;
 $font-serif: "Georgia", serif;
 
-@import url(http://fonts.googleapis.com/css?family=Pontano+Sans);
+@import url(//fonts.googleapis.com/css?family=Pontano+Sans);
 
 $font-icon: FontAwesome;
-$font-icon-path: "../font/fontawesome-webfont";
+$font-icon-path: "//netdna.bootstrapcdn.com/font-awesome/4.0.3/fonts/fontawesome-webfont";
 
 @font-face {
-  font-family: 'FontAwesome';
+  font-family: $font-icon;
   src: url('#{$font-icon-path}.eot');
   src: url('#{$font-icon-path}.eot?#iefix') format('embedded-opentype'),
     url('#{$font-icon-path}.woff') format('woff'),
