@@ -88,13 +88,13 @@ originalLayer.drawTile = function (canvas, tilePoint, zoom) {
 	// @10: 64,63 = 1n1e
 	// @7: 64,63 = 1n1e (with small tiles)
 	var tile_size = 2 << zoom; // START_ZOOM: 2048, START_ZOOM-1: 1024, START_ZOOM-2: 512 etc.
-	var tiles = START_ZOOM-zoom+1; // in one dimension
+	var tiles = 1 << (START_ZOOM-zoom); // START_ZOOM: 1, START_ZOOM-1: 2, START_ZOOM-2: 4, etc.
 	for(var x = 0; x < tiles; ++x)
 		for(var y = 0; y < tiles; ++y){
 			var xoff = x * tile_size;
 			var yoff = y * tile_size;
 			ctx.strokeRect(xoff, yoff, tile_size, tile_size);
-			ctx.fillText('(' + tilePoint.x + ', ' + tilePoint.y + ')', xoff + 5, yoff + 10);
+			ctx.fillText('(' + tilePoint.x + ', ' + tilePoint.y + ', ' + x + ',' + y + ')', xoff + 5, yoff + 10);
 		}
 };
 
