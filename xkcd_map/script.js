@@ -93,7 +93,6 @@ originalLayer.drawTile = function (canvas, tilePoint, zoom) {
 		for(var y = 0; y < tiles; ++y){
 			var xoff = x * tile_size;
 			var yoff = y * tile_size;
-			ctx.beginPath();
 			ctx.strokeRect(xoff, yoff, tile_size, tile_size);
 			ctx.fillText('(' + tilePoint.x + ', ' + tilePoint.y + ')', xoff + 5, yoff + 10);
 		}
