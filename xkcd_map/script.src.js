@@ -78,31 +78,28 @@ tileLayer.getTileUrl = function(tilePoint, zoom){
 }
 tileLayer.addTo(map);
 
-// Debug layers
-var originalLayer7 = L.tileLayer.canvas({"minZoom": 7, "maxZoom": 7});
-originalLayer7.drawTile = function (canvas, tilePoint, zoom) {
+// Debug Tile layers
+var originalLayer = L.tileLayer.canvas({"maxZoom": START_ZOOM, "tileSize": 2048});
+originalLayer.drawTile = function (canvas, tilePoint, zoom) {
 	if(tilePoint.x < 31 || tilePoint.x > 111) return;
 	var ctx = canvas.getContext('2d');
 	ctx.strokeStyle = ctx.fillStyle = "green";
-	ctx.beginPath();
-	ctx.strokeRect(0,0, 256,256);
-	// 64,63 = 1n1e
-	var xcoord = tilePoint.x >= 64 ? ((tilePoint.x - 64 + 1) + "e") : ((64 - tilePoint.x) + "w");
-	var ycoord = tilePoint.y >= 64 ? ((tilePoint.y - 64 + 1) + "s") : ((64 - tilePoint.y) + "n");
-	ctx.fillText('(' + xcoord + ycoord + '.png)',5,10);
-};
-
-var originalLayer10 = L.tileLayer.canvas({"minZoom": START_ZOOM, "maxZoom": START_ZOOM, "tileSize": 2048});
-originalLayer10.drawTile = function (canvas, tilePoint, zoom) {
-	if(tilePoint.x < 31 || tilePoint.x > 111) return;
-	var ctx = canvas.getContext('2d');
-	ctx.strokeStyle = ctx.fillStyle = "green";
-	ctx.beginPath();
-	ctx.strokeRect(0,0, 2048,2048);
-	// 64,63 = 1n1e
-	var xcoord = tilePoint.x >= 64 ? ((tilePoint.x - 64 + 1) + "e") : ((64 - tilePoint.x) + "w");
-	var ycoord = tilePoint.y >= 64 ? ((tilePoint.y - 64 + 1) + "s") : ((64 - tilePoint.y) + "n");
-	ctx.fillText('(' + xcoord + ycoord + '.png)',5,10);
+	if(zoom > START_ZOOM){
+		ctx.beginPath();
+		ctx.strokeRect(0,0, 2048,2048);
+		// 64,63 = 1n1e
+		var xcoord = tilePoint.x >= 64 ? ((tilePoint.x - 64 + 1) + "e") : ((64 - tilePoint.x) + "w");
+		var ycoord = tilePoint.y >= 64 ? ((tilePoint.y - 64 + 1) + "s") : ((64 - tilePoint.y) + "n");
+		ctx.fillText('(' + xcoord + ycoord + '.png)',5,10);
+	}
+	else{
+		ctx.beginPath();
+		ctx.strokeRect(0,0, 256,256);
+		// 64,63 = 1n1e
+		var xcoord = tilePoint.x >= 64 ? ((tilePoint.x - 64 + 1) + "e") : ((64 - tilePoint.x) + "w");
+		var ycoord = tilePoint.y >= 64 ? ((tilePoint.y - 64 + 1) + "s") : ((64 - tilePoint.y) + "n");
+		ctx.fillText('(' + xcoord + ycoord + '.png)',5,10);
+	}
 };
 
 var coordinateLayer = L.tileLayer.canvas({"maxZoom": START_ZOOM});
@@ -123,10 +120,9 @@ contentLayer.drawTile = function (canvas, tilePoint, zoom) {
 };
 
 // Layer Group
-var baseMaps = {"XKCD": tileLayer};
+var baseMaps = {"xkcd 1110": tileLayer};
 var overlayMaps = {
-	"File (7)": originalLayer7,
-	"File (10)": originalLayer10,
+	"File": originalLayer,
 	"Coordinates": coordinateLayer,
 	"Content": contentLayer
 };
