@@ -89,17 +89,8 @@ originalLayer.drawTile = function (canvas, tilePoint, zoom) {
 		ctx.beginPath();
 		ctx.strokeRect(0,0, 2048,2048);
 		// @10: 64,63 = 1n1e
-		var xcoord = tilePoint.x >= 64 ? ((tilePoint.x - 64 + 1) + "e") : ((64 - tilePoint.x) + "w");
-		var ycoord = tilePoint.y >= 64 ? ((tilePoint.y - 64 + 1) + "s") : ((64 - tilePoint.y) + "n");
-		ctx.fillText('(' + xcoord + ycoord + '.png)',5,10);
-	}
-	else{
-		ctx.beginPath();
-		ctx.strokeRect(0,0, 2048,2048);
 		// @7: 64,63 = 1n1e
-		var xcoord = tilePoint.x >= 64 ? ((tilePoint.x - 64 + 1) + "e") : ((64 - tilePoint.x) + "w");
-		var ycoord = tilePoint.y >= 64 ? ((tilePoint.y - 64 + 1) + "s") : ((64 - tilePoint.y) + "n");
-		ctx.fillText('(' + xcoord + ycoord + '.png)',5,10);
+		ctx.fillText('(' + tilePoint.x + ', ' + tilePoint.y + ')',5,10);
 	}
 };
 
