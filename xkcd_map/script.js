@@ -81,21 +81,22 @@ tileLayer.addTo(map);
 // Tile Highlighting layers
 var originalLayer = L.tileLayer.canvas({"maxZoom": START_ZOOM, "tileSize": 2048});
 originalLayer.drawTile = function (canvas, tilePoint, zoom) {
-	if(tilePoint.x < 31 || tilePoint.x > 111) return;
+	//if(tilePoint.x < 31 || tilePoint.x > 111) return;
+	if(tilePoint.x < 0 || tilePoint.x >= (1 << zoom)) return;
 	var ctx = canvas.getContext('2d');
 	ctx.strokeStyle = ctx.fillStyle = "green";
-	if(zoom > START_ZOOM){
+	if(zoom > 7){
 		ctx.beginPath();
 		ctx.strokeRect(0,0, 2048,2048);
-		// 64,63 = 1n1e
+		// @10: 64,63 = 1n1e
 		var xcoord = tilePoint.x >= 64 ? ((tilePoint.x - 64 + 1) + "e") : ((64 - tilePoint.x) + "w");
 		var ycoord = tilePoint.y >= 64 ? ((tilePoint.y - 64 + 1) + "s") : ((64 - tilePoint.y) + "n");
 		ctx.fillText('(' + xcoord + ycoord + '.png)',5,10);
 	}
 	else{
 		ctx.beginPath();
-		ctx.strokeRect(0,0, 256,256);
-		// 64,63 = 1n1e
+		ctx.strokeRect(0,0, 2048,2048);
+		// @7: 64,63 = 1n1e
 		var xcoord = tilePoint.x >= 64 ? ((tilePoint.x - 64 + 1) + "e") : ((64 - tilePoint.x) + "w");
 		var ycoord = tilePoint.y >= 64 ? ((tilePoint.y - 64 + 1) + "s") : ((64 - tilePoint.y) + "n");
 		ctx.fillText('(' + xcoord + ycoord + '.png)',5,10);
