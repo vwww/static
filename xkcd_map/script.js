@@ -85,11 +85,11 @@ originalLayer.drawTile = function (canvas, tilePoint, zoom) {
 	if(tilePoint.x < 0 || tilePoint.x >= (1 << zoom)) return;
 	var ctx = canvas.getContext('2d');
 	ctx.strokeStyle = ctx.fillStyle = "green";
-	if(zoom > 7){
+	/*if(zoom > 7)*/{
 		ctx.beginPath();
 		ctx.strokeRect(0,0, 2048,2048);
 		// @10: 64,63 = 1n1e
-		// @7: 64,63 = 1n1e
+		// @7: 64,63 = 1n1e (with small tiles)
 		ctx.fillText('(' + tilePoint.x + ', ' + tilePoint.y + ')',5,10);
 	}
 };
