@@ -1,7 +1,7 @@
 // Map
 var START_POS = new L.LatLng(1.1, 0.2);
-var START_ZOOM = 10; // also the maximum
-var map = L.map('map', { center: START_POS, zoom: START_ZOOM });
+var MAX_ZOOM = 10; // also the maximum
+var map = L.map('map', { center: START_POS, zoom: MAX_ZOOM });
 
 // Attribution
 map.attributionControl.setPrefix('Engine by <a href="http://leafletjs.com">Leaflet</a>'); // customize prefix
@@ -27,7 +27,7 @@ document.getElementsByTagName("head")[0].appendChild(s);})();
 /*
 //if (window.location.hash.length > 1)
 var parsed_hash = hash.parseHash(window.location.hash);
-if(parsed_hash && (parsed_hash.zoom != START_ZOOM || parsed_hash.center != START_POS || parsed_hash.center.distanceTo(START_POS) > 100000))
+if(parsed_hash && (parsed_hash.zoom != MAX_ZOOM || parsed_hash.center != START_POS || parsed_hash.center.distanceTo(START_POS) > 100000))
 	document.getElementById('intro').style.display = 'none';
 else
 */
@@ -47,7 +47,7 @@ function tile_is_available(zoom, x, y){
 }
 
 var tileLayer = L.tileLayer(layer_url, {
-	maxZoom: START_ZOOM,
+	maxZoom: MAX_ZOOM,
 	continuousWorld: true,
 	subdomains: "1234567890"
 });
@@ -79,22 +79,27 @@ tileLayer.getTileUrl = function(tilePoint, zoom){
 tileLayer.addTo(map);
 
 // Tile Highlighting layers
-var originalLayer = L.tileLayer.canvas({"maxZoom": START_ZOOM, "tileSize": 2048});
+var originalLayer = L.tileLayer.canvas({"maxZoom": MAX_ZOOM, "tileSize": 2048});
 originalLayer.drawTile = function (canvas, tilePoint, zoom) {
 	//if(tilePoint.x < 31 || tilePoint.x > 111) return;
 	if(tilePoint.x < 0 || tilePoint.x >= (1 << zoom)) return;
 	var ctx = canvas.getContext('2d');
 	ctx.strokeStyle = ctx.fillStyle = "green";
-	/*if(zoom > 7)*/{
-		ctx.beginPath();
-		ctx.strokeRect(0,0, 2048,2048);
-		// @10: 64,63 = 1n1e
-		// @7: 64,63 = 1n1e (with small tiles)
-		ctx.fillText('(' + tilePoint.x + ', ' + tilePoint.y + ')',5,10);
-	}
+	// @10: 64,63 = 1n1e
+	// @7: 64,63 = 1n1e (with small tiles)
+	var tile_size = 2 << zoom; // START_ZOOM: 2048, START_ZOOM-1: 1024, START_ZOOM-2: 512 etc.
+	var tiles = START_ZOOM-zoom+1; // in one dimension
+	for(var x = 0; x < tiles; ++x)
+		for(var y = 0; y < tiles; ++y){
+			var xoff = x * tile_size;
+			var yoff = y * tile_size;
+			ctx.beginPath();
+			ctx.strokeRect(xoff, yoff, tile_size, tile_size);
+			ctx.fillText('(' + tilePoint.x + ', ' + tilePoint.y + ')', xoff + 5, yoff + 10);
+		}
 };
 
-var coordinateLayer = L.tileLayer.canvas({"maxZoom": START_ZOOM});
+var coordinateLayer = L.tileLayer.canvas({"maxZoom": MAX_ZOOM});
 coordinateLayer.drawTile = function (canvas, tilePoint, zoom) {
 	if(tilePoint.x < 0 || tilePoint.x >= (1 << zoom)) return;
 	var ctx = canvas.getContext('2d');
@@ -103,7 +108,7 @@ coordinateLayer.drawTile = function (canvas, tilePoint, zoom) {
 	ctx.fillText('(' + tilePoint.x + ', ' + tilePoint.y + ')',5,10);
 };
 
-var contentLayer = L.tileLayer.canvas({"maxZoom": START_ZOOM});
+var contentLayer = L.tileLayer.canvas({"maxZoom": MAX_ZOOM});
 contentLayer.drawTile = function (canvas, tilePoint, zoom) {
 	if(!tile_is_available(zoom, tilePoint.x, tilePoint.y)) return;
 	var ctx = canvas.getContext('2d');
