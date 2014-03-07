@@ -26,6 +26,7 @@ strong{
 mark{
   background: #eaf5d6;
   color: inherit;
+  @include border-radius(3px);
 }
 .alignleft{
   float: left;
