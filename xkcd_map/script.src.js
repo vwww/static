@@ -1,7 +1,7 @@
 // Map
 var START_POS = new L.LatLng(1.1, 0.2);
 /** @const */ var MAX_ZOOM = 10; // also the maximum
-var map = L.map('map', { center: START_POS, zoom: MAX_ZOOM });
+var map = L.map('map', { center: START_POS, zoom: MAX_ZOOM, fullscreenControl: true });
 
 // Attribution
 map.attributionControl.setPrefix('Engine by <a href="http://leafletjs.com">Leaflet</a>'); // customize prefix
