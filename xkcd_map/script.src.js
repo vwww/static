@@ -52,6 +52,8 @@ var tileLayer = L.tileLayer(layer_url, {
 	subdomains: "1234567890"
 });
 
+var miniMap = new L.Control.MiniMap(tileLayer, {width: 350, height: 250}).addTo(map);
+
 tileLayer.getTileUrl = function(tilePoint, zoom){
 	zoom = zoom || this._getZoomForUrl();
 	if(tile_is_available(zoom, tilePoint.x, tilePoint.y))
