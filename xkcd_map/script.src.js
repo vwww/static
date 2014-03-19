@@ -51,6 +51,18 @@ var tileLayer = L.tileLayer(layer_url, {
 	continuousWorld: true,
 	subdomains: "1234567890"
 });
+var tileLayer2 = L.tileLayer(layer_url, {
+	maxZoom: MAX_ZOOM,
+	continuousWorld: true,
+	subdomains: "1234567890"
+});
+
+var miniMap = new L.Control.MiniMap(tileLayer2, {
+	width: 350,
+	height: 250,
+	toggleDisplay: true,
+	autoToggleDisplay: true
+}).addTo(map);
 
 tileLayer.getTileUrl = function(tilePoint, zoom){
 	zoom = zoom || this._getZoomForUrl();
@@ -135,9 +147,6 @@ var overlayMaps = {
 	"Content": contentLayer
 };
 L.control.layers(baseMaps, overlayMaps).addTo(map);
-
-var layers = new L.LayerGroup([tileLayer]);
-var miniMap = new L.Control.MiniMap(tileLayer, {width: 350, height: 250, toggleDisplay: true}).addTo(map);
 
 // Auto Close
 function auto_close(){
