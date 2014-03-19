@@ -65,7 +65,7 @@ var miniMap = new L.Control.MiniMap(tileLayer2, {
 	autoToggleDisplay: true
 }).addTo(map);
 
-tileLayer.getTileUrl = function(tilePoint, zoom){
+tileLayer.getTileUrl = tileLayer2.getTileUrl = function(tilePoint, zoom){
 	zoom = zoom || this._getZoomForUrl();
 	if(tile_is_available(zoom, tilePoint.x, tilePoint.y))
 		return L.Util.template(this._url, L.Util.extend({ 
