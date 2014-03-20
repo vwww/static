@@ -52,7 +52,8 @@ var tileLayer = L.tileLayer(layer_url, {
 	subdomains: "1234567890"
 });
 var tileLayer2 = L.tileLayer(layer_url, {
-	maxZoom: MAX_ZOOM,
+	minZoom: 2,
+	maxZoom: 4,
 	continuousWorld: true,
 	subdomains: "1234567890"
 });
