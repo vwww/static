@@ -60,7 +60,8 @@ var tileLayer2 = L.tileLayer(layer_url, {
 var miniMap = new L.Control.MiniMap(tileLayer2, {
 	width: 250,
 	height: 200,
-	zoomLevelFixed: 2,
+	//zoomLevelFixed: 2,
+	zoomLevelOffset: -4,
 	toggleDisplay: true,
 	autoToggleDisplay: true
 }).addTo(map);
