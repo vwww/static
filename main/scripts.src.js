@@ -51,9 +51,6 @@ $(document).ready(function () {
 	// Use #hash to jump locations
 	vsite.browse(location.hash.slice(1), true);
 
-	// Verify working JS
-	$("span#noscript").text("You have working JavaScript, therefore the interface should work.");
-
 	// Copyright year (once)
 	$("span#now").text((new Date).getFullYear());
 
@@ -62,6 +59,15 @@ $(document).ready(function () {
 	// Interval for hexadecimal = 117.5 ms = 1 / 16 ^ 7 years to ms
 	setInterval(vsite.uptick, 105);
 	vsite.uptick(); // initial tick
+
+	// TODO Poke bot info
+	$("span#poke_info").text("[getting data]");
+	var client = new Fpp.Client('http://pubsub.fanout.io/r/20018da6');
+	var channel = client.Channel('p');
+	channel.on('data', function (data) {
+		$("span#poke_info").text(data);
+		console.log(data);
+	});
 });
 
 // bind to the hash changes
