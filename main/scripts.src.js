@@ -46,7 +46,7 @@ var vsite = {
 	},
 	// Poke bot info
 	poke_update: function (data, first){
-		var msg = data[0] + " returned / " + data[1] + " checks (" + (data[0] * 100 / data[1]).toFixed(3) + "% duty cycle)";
+		var msg = data[0] + " returned / " + data[1] + " checks / " + (data[0] * 100 / data[1]).toFixed(3) + "% duty cycle";
 		if(data[2]){
 			msg += " / last poke: " + data[2][1] + " at " + data[2][0];
 		}
