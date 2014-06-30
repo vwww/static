@@ -45,7 +45,7 @@ var vsite = {
 		$('span#uptime-years-hex').text(hexTimeValue.slice(0, 7 + hexTimeValue.indexOf('.') + 1));
 		// also good for the poke bot...
 		$('#poke_timer').each(function() {
-			$(this).text(((new Date() - vsite.poke_last) / 1000).toFixed(1) + " s");
+			$(this).text(((new Date() - vsite.poke_last) / 1000).toFixed(1) + "s ago");
 		});
 	},
 	// Poke bot info
@@ -54,7 +54,7 @@ var vsite = {
 		var msg = data[0] + " returned / " + data[1] + " checks / " + (data[0] * 100 / data[1]).toFixed(3) + "% duty cycle / last poke: ";
 		if(data[2]){
 			vsite.poke_last = new Date(data[2][0] * 1000);
-			msg += '<a href="https://www.facebook.com/' + data[2][1] + '">' + data[2][2] + '</a> <a id="poke_timer" title="' + vsite.poke_last.toString() + '">a moment</a> ago';
+			msg += '<a id="poke_timer" title="' + vsite.poke_last.toString() + '">recently</a> by <a href="https://www.facebook.com/' + data[2][1] + '">' + data[2][2] + '</a>';
 		} else {
 			msg += 'unknown';
 		}
