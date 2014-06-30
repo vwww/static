@@ -46,11 +46,8 @@ var vsite = {
 	},
 	// Poke bot info
 	poke_update: function (data, first){
-		var msg = data[0] + " pokes returned on " + data[1] + " checks (" + (data[0] * 100 / data[1]) + "%";
-		if(!first){
-			msg += ", +0%%";
-		}
-		$("span#poke_info").text(msg + ")");
+		var msg = data[0] + " returned / " + data[1] + " checks (" + (data[0] * 100 / data[1]) + "% duty cycle) / last poke: " + data[3] + " at " + data[2];
+		$("span#poke_info").text(msg);
 		console.log(data);
 	}
 };
