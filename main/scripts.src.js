@@ -43,6 +43,15 @@ var vsite = {
 		$('span#uptime-years').text(timeValue.toFixed(8));
 		var hexTimeValue = timeValue.toString(16);
 		$('span#uptime-years-hex').text(hexTimeValue.slice(0, 7 + hexTimeValue.indexOf('.') + 1));
+	},
+	// Poke bot info
+	poke_update: function (data, first){
+		var msg = data[0] + " pokes returned on " + data[1] + " checks (" + (data[0] * 100 / data[1]) + "%";
+		if(!first){
+			msg += ", +0%%";
+		}
+		$("span#poke_info").text(msg + ")");
+		console.log(data);
 	}
 };
 
@@ -60,14 +69,14 @@ $(document).ready(function () {
 	setInterval(vsite.uptick, 105);
 	vsite.uptick(); // initial tick
 
-	// TODO Poke bot info
+	// Poke bot info
 	$("span#poke_info").text("[getting data]");
+	$.getJSON("https://vfbbot.appspot.com/stats?callback=?", function( data ) {
+		vsite.poke_update(data, true);
+	});
 	var client = new Fpp.Client('http://pubsub.fanout.io/r/20018da6');
 	var channel = client.Channel('p');
-	channel.on('data', function (data) {
-		$("span#poke_info").text(data);
-		console.log(data);
-	});
+	channel.on('data', vsite.poke_update);
 });
 
 // bind to the hash changes
