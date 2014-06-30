@@ -48,9 +48,10 @@ var vsite = {
 	poke_update: function (data, first){
 		var msg = data[0] + " returned / " + data[1] + " checks / " + (data[0] * 100 / data[1]).toFixed(3) + "% duty cycle";
 		if(data[2]){
-			msg += " / last poke: " + data[2][1] + " at " + data[2][0];
+			var date = new Date(data[2][0] * 1000);
+			msg += ' / last poke: <span title="' + data[2][2] + '">' + data[2][1] + "</span> at " + date.toString();
 		}
-		$("span#poke_info").text(msg);
+		$("span#poke_info").html(msg);
 		console.log(data);
 	}
 };
