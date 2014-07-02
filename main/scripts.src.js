@@ -60,6 +60,10 @@ var vsite = {
 					$('#poke_t').text(data[c][1]);
 					$('#poke_c').text((data[c][0] * 100 / data[c][1]).toFixed(4));
 					// fallthrough
+				case 't':
+					if(c == 't')
+						vsite.poke_now[1] = data[c];
+					// fallthrough
 				case 'q':
 					if(c == 'q')
 						vsite.poke_yesterday = data[c];
