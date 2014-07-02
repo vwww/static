@@ -65,12 +65,12 @@ var vsite = {
 						vsite.poke_yesterday = data[c];
 					$('#poke_dr').text('(+' + (vsite.poke_now[0] - vsite.poke_yesterday[0]) + ')');
 					$('#poke_dt').text('(+' + (vsite.poke_now[1] - vsite.poke_yesterday[1]) + ')');
-					var dc = 100 * (vsite.poke_now[0] / vsite.poke_now[1] - vsite.poke_yesterday[0] / vsite.poke_yesterday[1]);
+					var dc = 10000 * (vsite.poke_now[0] / vsite.poke_now[1] - vsite.poke_yesterday[0] / vsite.poke_yesterday[1]);
 					if(dc < 0){
-						$('#poke_dc').text('(-' + (-dc).toFixed(4) + ')');
+						$('#poke_dc').html('(-' + (-dc).toFixed(5) + '&#8241;)');
 						$('#poke_dc').attr('class', 'poke_dn');
 					} else {
-						$('#poke_dc').text('(+' + dc.toFixed(4) + ')');
+						$('#poke_dc').html('(+' + dc.toFixed(5) + '&#8241;)');
 						$('#poke_dc').attr('class', 'poke_up');
 					}
 					break;

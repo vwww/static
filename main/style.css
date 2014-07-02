@@ -178,7 +178,12 @@ li.site h3 {
 	border-right-color: #6aad2d;
 }
 
+span#poke_r, span#poke_t, span#poke_c {
+	font-weight: bold;
+}
+
 span#poke_lt {
+	font-weight: bold;
 	text-decoration: underline;
 }
 
