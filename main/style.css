@@ -182,10 +182,10 @@ span#poke_lt {
 	text-decoration: underline;
 }
 
-span#poke_up {
+span.poke_up {
 	color: #09e;
 }
 
-span#poke_dn {
+span.poke_dn {
 	color: #d14836;
 }
