@@ -58,7 +58,7 @@ var vsite = {
 					vsite.poke_now = data[c];
 					$('#poke_r').text(data[c][0]);
 					$('#poke_t').text(data[c][1]);
-					$('#poke_c').text((data[c][0] * 100 / data[c][1]).toFixed(4));
+					$('#poke_c').text((data[c][0] * 100 / data[c][1]).toFixed(4) + '%');
 					// fallthrough
 				case 't':
 					if(c == 't')
@@ -71,10 +71,10 @@ var vsite = {
 					$('#poke_dt').text('(+' + (vsite.poke_now[1] - vsite.poke_yesterday[1]) + ')');
 					var dc = 10000 * (vsite.poke_now[0] / vsite.poke_now[1] - vsite.poke_yesterday[0] / vsite.poke_yesterday[1]);
 					if(dc < 0){
-						$('#poke_dc').html('(-' + (-dc).toFixed(5) + '&#8241;)');
+						$('#poke_dc').html('(-' + (-dc).toFixed(4) + '&#8241;)');
 						$('#poke_dc').attr('class', 'poke_dn');
 					} else {
-						$('#poke_dc').html('(+' + dc.toFixed(5) + '&#8241;)');
+						$('#poke_dc').html('(+' + dc.toFixed(4) + '&#8241;)');
 						$('#poke_dc').attr('class', 'poke_up');
 					}
 					break;
