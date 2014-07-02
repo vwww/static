@@ -44,21 +44,51 @@ var vsite = {
 		var hexTimeValue = timeValue.toString(16);
 		$('span#uptime-years-hex').text(hexTimeValue.slice(0, 7 + hexTimeValue.indexOf('.') + 1));
 		// also good for the poke bot...
-		$('#poke_timer').each(function() {
-			$(this).text(((new Date() - vsite.poke_last) / 1000).toFixed(0) + "s ago");
-		});
+		if(vsite.poke_last)
+			$('#poke_lt').text(((new Date() - vsite.poke_last) / 1000).toFixed(0) + "s ago");
 	},
 	// Poke bot info
 	poke_last: null,
+	poke_now: [1, 2],
+	poke_yesterday: [0, 1],
 	poke_update: function (data, first){
-		var msg = data[0] + " returned / " + data[1] + " checks / " + (data[0] * 100 / data[1]).toFixed(4) + "% duty cycle / last poke back: ";
-		if(data[2]){
-			vsite.poke_last = new Date(data[2][0] * 1000);
-			msg += '<a id="poke_timer" title="' + vsite.poke_last.toString() + '">recently</a> by <a href="https://www.facebook.com/' + data[2][1] + '">' + data[2][2] + '</a>';
-		} else {
-			msg += 'unknown';
+		for(var c in data){
+			switch(c){
+				case 'p':
+					vsite.poke_now = data[c];
+					$('#poke_r').text(data[c][0]);
+					$('#poke_t').text(data[c][1]);
+					$('#poke_t').text((data[c][0] / data[c][1]).toFixed(4));
+					// fallthrough
+				case 'q':
+					if(c == 'q')
+						vsite.poke_yesterday = data[c];
+					$('#poke_dr').text('(+' + (vsite.poke_now[0] - vsite.poke_yesterday[0]) + ')');
+					$('#poke_dt').text('(+' + (vsite.poke_now[1] - vsite.poke_yesterday[1]) + ')');
+					var dc = vsite.poke_now[0] / vsite.poke_now[1] - vsite.poke_yesterday[0] - vsite.poke_yesterday[1];
+					if(dc < 0){
+						$('#poke_dt').text('(-' + (-dc).toFixed(4) + ')');
+						$('#poke_dt').attr('class', 'poke_dn');
+					} else {
+						$('#poke_dt').text('(+' + dc.toFixed(4) + ')');
+						$('#poke_dt').attr('class', 'poke_up');
+					}
+					break;
+				case 'l':
+					if(data[c]){
+						vsite.poke_last = new Date(data[c][0] * 1000);
+						$('#poke_lt').text('recently');
+						$('#poke_lt').attr('title', vsite.poke_last.toString());
+						$('#poke_lu').text(data[c][2]);
+						$('#poke_lu').attr('href', 'https://www.facebook.com/' + data[c][1]);
+					} else {
+						$('#poke_lt').text('unknown');
+						$('#poke_lu').text('someone');
+						$('#poke_lu').removeAttr('href');
+					}
+					break;
+			}
 		}
-		$("span#poke_info").html(msg);
 		console.log(data);
 	}
 };
@@ -79,9 +109,7 @@ $(document).ready(function () {
 
 	// Poke bot info
 	$("span#poke_info").text("[getting data]");
-	$.getJSON("https://vfbbot.appspot.com/stats?callback=?", function( data ) {
-		vsite.poke_update(data, true);
-	});
+	$.getJSON("https://vfbbot.appspot.com/stats?callback=?", vsite.poke_update);
 	var client = new Fpp.Client('http://pubsub.fanout.io/r/20018da6');
 	var channel = client.Channel('p');
 	channel.on('data', vsite.poke_update);
