@@ -62,7 +62,7 @@ var vsite = {
 					// fallthrough
 				case 't':
 					if(c == 't')
-						vsite.poke_now[1] = data[c];
+						$('#poke_t').text(vsite.poke_now[1] = data[c]);
 					// fallthrough
 				case 'q':
 					if(c == 'q')
