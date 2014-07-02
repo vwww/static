@@ -58,14 +58,14 @@ var vsite = {
 					vsite.poke_now = data[c];
 					$('#poke_r').text(data[c][0]);
 					$('#poke_t').text(data[c][1]);
-					$('#poke_c').text((data[c][0] / data[c][1]).toFixed(4));
+					$('#poke_c').text((data[c][0] * 100 / data[c][1]).toFixed(4));
 					// fallthrough
 				case 'q':
 					if(c == 'q')
 						vsite.poke_yesterday = data[c];
 					$('#poke_dr').text('(+' + (vsite.poke_now[0] - vsite.poke_yesterday[0]) + ')');
 					$('#poke_dt').text('(+' + (vsite.poke_now[1] - vsite.poke_yesterday[1]) + ')');
-					var dc = vsite.poke_now[0] / vsite.poke_now[1] - vsite.poke_yesterday[0] - vsite.poke_yesterday[1];
+					var dc = 100 * (vsite.poke_now[0] / vsite.poke_now[1] - vsite.poke_yesterday[0] / vsite.poke_yesterday[1]);
 					if(dc < 0){
 						$('#poke_dc').text('(-' + (-dc).toFixed(4) + ')');
 						$('#poke_dc').attr('class', 'poke_dn');

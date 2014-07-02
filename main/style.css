@@ -177,3 +177,15 @@ li.site h3 {
 .site.python:after {
 	border-right-color: #6aad2d;
 }
+
+span#poke_lt {
+	text-decoration: underline;
+}
+
+span#poke_up {
+	color: #09e;
+}
+
+span#poke_dn {
+	color: #d14836;
+}
