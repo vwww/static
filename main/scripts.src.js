@@ -113,10 +113,14 @@ $(document).ready(function () {
 
 	// Poke bot info
 	$("span#poke_info").text("[getting data]");
-	$.getJSON("https://vfbbot.appspot.com/stats?callback=?", vsite.poke_update);
-	var client = new Fpp.Client('http://pubsub.fanout.io/r/20018da6');
-	var channel = client.Channel('p');
-	channel.on('data', vsite.poke_update);
+	var simperium = new Simperium('brake-foods-bc7', { token : 'ce4832ce12e24ee6860886d9b4567b12'});
+	var bucket = simperium.bucket('poke');
+	bucket.on('notify', function(id, data) {
+		console.log("object "+id+" was updated!");
+		console.log("new data is:");
+		console.log(data);
+	});
+	bucket.start();
 });
 
 // bind to the hash changes
