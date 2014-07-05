@@ -49,49 +49,34 @@ var vsite = {
 	},
 	// Poke bot info
 	poke_last: null,
-	poke_now: [1, 2],
-	poke_yesterday: [0, 1],
 	poke_update: function (data, first){
-		for(var c in data){
-			switch(c){
-				case 'p':
-					vsite.poke_now = data[c];
-					$('#poke_r').text(data[c][0]);
-					$('#poke_t').text(data[c][1]);
-					$('#poke_c').text((data[c][0] * 100 / data[c][1]).toFixed(4) + '%');
-					// fallthrough
-				case 't':
-					if(c == 't')
-						$('#poke_t').text(vsite.poke_now[1] = data[c]);
-					// fallthrough
-				case 'q':
-					if(c == 'q')
-						vsite.poke_yesterday = data[c];
-					$('#poke_dr').text('(+' + (vsite.poke_now[0] - vsite.poke_yesterday[0]) + ')');
-					$('#poke_dt').text('(+' + (vsite.poke_now[1] - vsite.poke_yesterday[1]) + ')');
-					var dc = 10000 * (vsite.poke_now[0] / vsite.poke_now[1] - vsite.poke_yesterday[0] / vsite.poke_yesterday[1]);
-					if(dc < 0){
-						$('#poke_dc').html('(-' + (-dc).toFixed(4) + '&#8241;)');
-						$('#poke_dc').attr('class', 'poke_dn');
-					} else {
-						$('#poke_dc').html('(+' + dc.toFixed(4) + '&#8241;)');
-						$('#poke_dc').attr('class', 'poke_up');
-					}
-					break;
-				case 'l':
-					if(data[c]){
-						vsite.poke_last = new Date(data[c][0] * 1000);
-						$('#poke_lt').text('recently');
-						$('#poke_lt').attr('title', vsite.poke_last.toString());
-						$('#poke_lu').text(data[c][2]);
-						$('#poke_lu').attr('href', 'https://www.facebook.com/' + data[c][1]);
-					} else {
-						$('#poke_lt').text('unknown');
-						$('#poke_lu').text('someone');
-						$('#poke_lu').removeAttr('href');
-					}
-					break;
-			}
+		// current stats (p)
+		$('#poke_r').text(data.pokes);
+		$('#poke_t').text(data.ticks); // (t)
+		$('#poke_c').text((data.pokes * 100 / data.ticks).toFixed(4) + '%');
+		// previous day stats (q)
+		$('#poke_dr').text('(+' + (data.pokes - data.pokes_) + ')');
+		$('#poke_dt').text('(+' + (data.ticks - data.ticks_) + ')');
+		var dc = 10000 * (data.pokes / data.ticks - data.pokes_ / data.ticks_);
+		if(dc < 0){
+			$('#poke_dc').html('(-' + (-dc).toFixed(4) + '&#8241;)');
+			$('#poke_dc').attr('class', 'poke_dn');
+		} else {
+			$('#poke_dc').html('(+' + dc.toFixed(4) + '&#8241;)');
+			$('#poke_dc').attr('class', 'poke_up');
+		}
+		// last poke (l)
+		if(data.l){
+			vsite.poke_last = new Date(data.l[0] * 1000);
+			$('#poke_lt').text('recently');
+			$('#poke_lt').attr('title', vsite.poke_last.toString());
+			$('#poke_lu').text(data.l[2]);
+			$('#poke_lu').attr('href', 'https://www.facebook.com/' + data.l[1]);
+		} else {
+			vsite.poke_last = 0;
+			$('#poke_lt').text('unknown');
+			$('#poke_lu').text('someone');
+			$('#poke_lu').removeAttr('href');
 		}
 		console.log(data);
 	}
@@ -116,9 +101,12 @@ $(document).ready(function () {
 	var simperium = new Simperium('brake-foods-bc7', { token : 'ce4832ce12e24ee6860886d9b4567b12'});
 	var bucket = simperium.bucket('poke');
 	bucket.on('notify', function(id, data) {
-		console.log("object "+id+" was updated!");
-		console.log("new data is:");
-		console.log(data);
+		if(id == 'p')
+			vsite.poke_update(data);
+		else {
+			console.log(id + " was updated to");
+			console.log(data);
+		}
 	});
 	bucket.start();
 });
