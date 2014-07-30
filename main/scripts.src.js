@@ -1,3 +1,6 @@
+// config
+$.timeago.settings.strings.seconds = '%ds ago';
+
 // "Victor's Site" code (encapsulate the scope)
 var vsite = {
 	// CONSTANTS
@@ -43,12 +46,8 @@ var vsite = {
 		$('span#uptime-years').text(timeValue.toFixed(8));
 		var hexTimeValue = timeValue.toString(16);
 		$('span#uptime-years-hex').text(hexTimeValue.slice(0, 7 + hexTimeValue.indexOf('.') + 1));
-		// also good for the poke bot...
-		if(vsite.poke_last)
-			$('#poke_lt').text(((new Date() - vsite.poke_last) / 1000).toFixed(0) + "s ago");
 	},
 	// Poke bot info
-	poke_last: null,
 	poke_update: function (data, first){
 		// current stats (p)
 		$('#poke_r').text(data.pokes);
@@ -67,13 +66,12 @@ var vsite = {
 		}
 		// last poke (l)
 		if(data.l){
-			vsite.poke_last = new Date(data.l[0] * 1000);
-			$('#poke_lt').text('recently');
-			$('#poke_lt').attr('title', vsite.poke_last.toString());
+			$('#poke_lt').text((new Date(data.l[0] * 1000)).toString());
+			$('#poke_lt').attr('title', (new Date(data.l[0] * 1000)).toISOString());
+			$('#poke_lt').timeago();
 			$('#poke_lu').text(data.l[2]);
 			$('#poke_lu').attr('href', 'https://www.facebook.com/' + data.l[1]);
 		} else {
-			vsite.poke_last = 0;
 			$('#poke_lt').text('unknown');
 			$('#poke_lu').text('someone');
 			$('#poke_lu').removeAttr('href');
@@ -89,6 +87,9 @@ $(document).ready(function () {
 
 	// Copyright year (once)
 	$("span#now").text((new Date).getFullYear());
+
+	// Format build time
+	$("span#build-time").timeago();
 
 	// "Uptime" counter
 	// Interval for decimal = 315.36ms = 0.00000001 years
