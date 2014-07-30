@@ -1,5 +1,5 @@
 // config
-$.timeago.settings.strings.seconds = '%ds ago';
+$.timeago.settings.strings.seconds = '%d seconds';
 
 // "Victor's Site" code (encapsulate the scope)
 var vsite = {
