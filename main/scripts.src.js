@@ -68,7 +68,7 @@ var vsite = {
 		if(data.l){
 			$('#poke_lt').text((new Date(data.l[0] * 1000)).toString());
 			$('#poke_lt').attr('title', (new Date(data.l[0] * 1000)).toISOString());
-			$('#poke_lt').timeago();
+			$('#poke_lt').data("timeago", null).timeago();
 			$('#poke_lu').text(data.l[2]);
 			$('#poke_lu').attr('href', 'https://www.facebook.com/' + data.l[1]);
 		} else {
