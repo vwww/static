@@ -6,11 +6,14 @@ jQuery.extend({
 			if (match) {
 				var highlight = document.createElement(nodeName || 'span');
 				if(className) highlight.className = className;
-				var wordNode = node.splitText(match.index);
-				wordNode.splitText(match[0].length);
+
+				var wordNode = match.index ? node.splitText(match.index) : node;
+				if (match.index + match[0].length < node.data.length) wordNode.splitText(match[0].length);
+
 				var wordClone = wordNode.cloneNode(true);
 				highlight.appendChild(wordClone);
 				wordNode.parentNode.replaceChild(highlight, wordNode);
+
 				return 1; //skip added node in parent
 			}
 		} else if ((node.nodeType === 1 && node.childNodes) && // only element nodes that have children
