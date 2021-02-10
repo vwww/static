@@ -8,7 +8,7 @@ jQuery.extend({
 				if(className) highlight.className = className;
 
 				var wordNode = match.index ? node.splitText(match.index) : node;
-				if (match.index + match[0].length < node.data.length) wordNode.splitText(match[0].length);
+				if (match[0].length < wordNode.data.length) wordNode.splitText(match[0].length);
 
 				var wordClone = wordNode.cloneNode(true);
 				highlight.appendChild(wordClone);
